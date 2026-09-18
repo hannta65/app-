@@ -1,0 +1,10 @@
+router.patch("/chamados/:id/status", (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+  if (!status) return res.status(400).json({ error: "Campo obrigatório: status" });
+
+  const chamado = alterarStatus(parseInt(id), status);
+  if (!chamado) return res.status(404).json({ error: "Chamado não encontrado" });
+
+  res.json(chamado);
+});
