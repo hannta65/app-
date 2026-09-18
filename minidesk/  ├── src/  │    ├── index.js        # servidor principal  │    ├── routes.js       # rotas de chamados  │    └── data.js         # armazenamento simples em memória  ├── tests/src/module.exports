@@ -1,0 +1,8 @@
+function alterarStatus(id, novoStatus) {
+  const chamado = chamados.find(c => c.id === id);
+  if (!chamado) return null;
+  chamado.status = novoStatus;
+  return chamado;
+}
+
+module.exports = { adicionarChamado, listarChamados, alterarStatus };
