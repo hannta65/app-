@@ -19,3 +19,13 @@ describe("MiniDesk - Chamados", () => {
     expect(lista.length).toBe(2);
   });
 });
+test("Deve alterar o status de um chamado existente", () => {
+  const chamado = adicionarChamado("Erro no login", "Usuário não consegue entrar", "alta");
+  const atualizado = alterarStatus(chamado.id, "em andamento");
+  expect(atualizado.status).toBe("em andamento");
+});
+
+test("Deve retornar null ao tentar alterar status de chamado inexistente", () => {
+  const resultado = alterarStatus(999, "concluído");
+  expect(resultado).toBeNull();
+});
